@@ -1,0 +1,39 @@
+import os
+os.system('cls' if os.name == 'nt' else 'clear')
+
+quantidade = int(input("Digite a quantidade de números: "))
+quantidade = quantidade - 1
+numeros = []
+
+while quantidade >= len(numeros):
+    numero = int(input(f"Digite o número {len(numeros) + 1}: "))
+    numeros.append(numero)
+
+inicio = 0
+fim = len(numeros) - 1
+encontrado = False
+numeros.sort()
+
+print("\n")
+procurado = int(input("Valor procurado: "))
+print("Números digitados:", numeros)
+
+while inicio <= fim:
+    meio = (inicio + fim) // 2
+
+    if numeros[meio] == procurado:
+        encontrado = True
+        print("\n" + "=" * 30)
+        print("Valor encontrado!")
+        print(f"Encontrado na posição {meio}")
+        break
+    elif procurado < numeros[meio]:
+        fim = meio - 1
+    else:
+        inicio = meio + 1
+
+if not encontrado:
+    print("Valor não encontrado")
+
+print("\n" + "=" * 30)
+print("Programa finalizado, até a proxima.")
